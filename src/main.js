@@ -31,6 +31,19 @@ Vue.use(VueResource)
 Vue.http.options.root = "http://www.lovegf.cn:8899/"
 Vue.http.options.emulateJSON = true
 
+//导入格式化时间插件
+import moment from 'moment'
+//定义全局的过滤器
+Vue.filter('dateFormat',function(dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
+
+//定义全局评论子组件
+// import comment from './components/subcomponents/comment.vue'
+//参数1: 组件名 决定了将来如何使用 参数2: 组件对象
+// Vue.component('comment',comment)
+
+
 let vm = new Vue({
   el: '#app',
   render: c => c(app),
